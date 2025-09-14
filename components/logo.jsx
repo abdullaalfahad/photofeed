@@ -1,11 +1,11 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const Logo = () => {
   return (
     <Link href="/">
-     <span className="text-2xl font-bold">PhotoFeed</span>
+      <span className="text-2xl font-bold">PhotoFeed</span>
     </Link>
-  )
-}
+  );
+};
 
-export default Logo
+export default Logo;
