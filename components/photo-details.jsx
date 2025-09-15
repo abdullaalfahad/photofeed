@@ -1,5 +1,9 @@
 import { getDictionaries } from "@/app/[lang]/dictionaries";
 import Image from "next/image";
+import Heart from "@/public/heart.svg";
+import Save from "@/public/save.svg";
+import Share from "@/public/share.svg";
+import Follow from "@/public/follow.svg";
 
 const PhotoDetails = async ({ id, lang }) => {
   const response = await fetch(
@@ -15,7 +19,7 @@ const PhotoDetails = async ({ id, lang }) => {
         <Image
           className="max-w-full h-full max-h-[70vh] mx-auto"
           src={photo.url}
-          alt={photo.title}
+          alt={photo.title || "Photo"}
           width={900}
           height={500}
         />
@@ -24,7 +28,7 @@ const PhotoDetails = async ({ id, lang }) => {
       <div className="p-6 border rounded-xl col-span-12 lg:col-span-4">
         <h2 className="text-lg lg:text-2xl font-bold mb-2">{photo.title}</h2>
         <div className="text-xs lg:text-sm text-black/60 mb-6">
-          {photo.tags.map((tag) => `#${tag} `)}
+          {photo?.tags?.map((tag) => `#${tag} `)}
         </div>
         <div className="space-y-2.5 text-black/80 text-xs lg:text-sm">
           <div className="flex justify-between">
@@ -59,7 +63,7 @@ const PhotoDetails = async ({ id, lang }) => {
               </div>
             </div>
             <button className="flex items-center gap-1.5 text-black/60 text-xs xl:text-sm">
-              <img src="/follow.svg" className="w-5 h-5" />
+              <Image src={Follow} className="w-5 h-5" width={50} height={50} />
               {dictionary.follow}
             </button>
           </div>
@@ -68,30 +72,15 @@ const PhotoDetails = async ({ id, lang }) => {
         <div className="mt-6">
           <div className="flex items-stretch gap-3">
             <button className="flex-1 border py-1.5 rounded text-xs lg:text-sm flex items-center justify-center text-center gap-1.5 font-bold hover:bg-yellow-400">
-              <Image
-                src="/heart.svg"
-                className="w-5 h-5"
-                width={50}
-                height={50}
-              />
+              <Image src={Heart} className="w-5 h-5" width={50} height={50} />
               {photo.likes}
             </button>
             <button className="flex-1 border py-1.5 rounded text-xs lg:text-sm flex items-center justify-center text-center gap-1.5 font-bold hover:bg-yellow-400">
-              <Image
-                src="/save.svg"
-                className="w-5 h-5"
-                width={50}
-                height={50}
-              />
+              <Image src={Save} className="w-5 h-5" width={50} height={50} />
               {dictionary.save}
             </button>
             <button className="flex-1 border py-1.5 rounded text-xs lg:text-sm flex items-center justify-center text-center gap-1.5 font-bold hover:bg-yellow-400">
-              <Image
-                src="/share.svg"
-                className="w-5 h-5"
-                width={50}
-                height={50}
-              />
+              <Image src={Share} className="w-5 h-5" width={50} height={50} />
               {dictionary.share}
             </button>
           </div>

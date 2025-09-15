@@ -5,7 +5,5 @@ export default async function Home() {
   const res = await fetch(url);
   const photos = await res.json();
 
-  console.log(photos);
-
   return <PhotoList photos={photos} />;
 }
